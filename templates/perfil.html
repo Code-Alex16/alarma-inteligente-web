@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - Alarma Inteligente</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}">Inicio</a>
+        <a href="{{ url_for('configuracion') }}">Configuración</a>
+        <a href="{{ url_for('perfil') }}">Perfil</a>
+    </nav>
+    <div class="container">
+        <h1>Sobre mí</h1>
+        <form id="formPerfil">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre">
+
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido">
+
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email">
+
+            <label for="telefono">Número de teléfono:</label>
+            <input type="tel" id="telefono" name="telefono">
+
+            <button type="submit">Guardar</button>
+        </form>
+
+        <h2>Contactos de Emergencia</h2>
+        <form id="formContactoEmergencia">
+            <input type="hidden" id="contactoId" name="contactoId"> <label for="contactoNombre">Nombre:</label>
+            <input type="text" id="contactoNombre" name="contactoNombre">
+
+            <label for="contactoTelefono">Número de teléfono:</label>
+            <input type="tel" id="contactoTelefono" name="contactoTelefono">
+
+            <button type="submit">Guardar Contacto</button>
+            <p class="feedback-message"></p>
+        </form>
+
+        <div id="listaContactos">
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

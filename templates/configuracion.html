@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración - Alarma Inteligente</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}">Inicio</a>
+        <a href="{{ url_for('configuracion') }}">Configuración</a>
+        <a href="{{ url_for('perfil') }}">Perfil</a>
+    </nav>
+    <div class="container">
+        <h1>Configuración de Alarma</h1>
+        <form id="formConfiguracion">
+            <label for="mensajePersonalizado">Mensaje Personalizado:</label>
+            <input type="text" id="mensajePersonalizado" name="mensajePersonalizado"
+                placeholder="Ej: ¡Alarma activada en casa!">
+
+            <label for="notificacionMetodo">Método de Notificación:</label>
+            <select id="notificacionMetodo" name="notificacionMetodo">
+                <option value="SMS">SMS</option>
+                <option value="WhatsApp">WhatsApp</option>
+            </select>
+
+            <label for="contactoEmergencia">Contacto de Emergencia (opcional):</label>
+            <select id="contactoEmergencia" name="contactoEmergencia">
+                <option value="">-- Seleccione --</option>
+            </select>
+
+            <button type="submit">Guardar Cambios</button>
+            <p class="feedback-message"></p>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

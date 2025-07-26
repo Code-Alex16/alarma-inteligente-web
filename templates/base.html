@@ -1,0 +1,20 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Alarma{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+</head>
+<body>
+  <nav>
+    <a href="/">Inicio</a>
+    <a href="/settings">Configuración</a>
+    <a href="/perfil">Perfil</a>
+  </nav>
+
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>

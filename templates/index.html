@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Alarma Inteligente</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}">Inicio</a>
+        <a href="{{ url_for('configuracion') }}">Configuración</a>
+        <a href="{{ url_for('perfil') }}">Perfil</a>
+    </nav>
+    <div class="container">
+        <h1>Estado de la Alarma</h1>
+
+        <div class="switch-container">
+            <span>Alarma Activa:</span>
+            <label class="switch">
+                <input type="checkbox" id="alarmaToggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <p id="estadoAlarmaTexto">Cargando estado...</p>
+        <p id="mensajeSistema" class="feedback-message"></p>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>
