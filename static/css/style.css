@@ -1,67 +1,4 @@
-/*body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-}
-
-header {
-    background-color: #333;
-    color: white;
-    padding: 1rem 0;
-    text-align: center;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-}
-
-main {
-    padding: 20px;
-    max-width: 800px;
-    margin: 20px auto;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h1, h2 {
-    color: #0056b3;
-}
-
-form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-form input[type="text"],
-form input[type="email"],
-form input[type="tel"],
-form select {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-form button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-form button:hover {
-    background-color: #0056b3;
-}*/
-/* Reset básico */
+/* Estilos Globales y Base (para todos los dispositivos, incluyendo escritorio) */
 * {
   margin: 0;
   padding: 0;
@@ -72,20 +9,22 @@ form button:hover {
 body {
   background-color: #ffffff;
   color: #111;
-  padding-top: 60px;
+  padding-top: 60px; /* Espacio para la barra de navegación fija superior en escritorio */
+  /* padding-bottom se añade en la media query para móvil */
 }
 
-/* Navbar */
+/* Navbar (Estilos para escritorio, por defecto) */
 nav {
   background-color: #0d47a1;
-  position: fixed;
+  position: fixed; /* Fijo en la parte superior para escritorio */
   top: 0;
   width: 100%;
   height: 60px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-around; /* Distribuye los enlaces horizontalmente */
   z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sutil sombra para que resalte */
 }
 
 nav a {
@@ -93,6 +32,10 @@ nav a {
   text-decoration: none;
   margin: 0 10px;
   font-weight: 500;
+  padding: 0 5px;
+  white-space: nowrap; /* Evita que el texto de los enlaces se rompa */
+  flex-grow: 1; /* Permite que los enlaces crezcan para ocupar espacio */
+  text-align: center; /* Centra el texto de los enlaces */
 }
 
 nav a:hover {
@@ -101,7 +44,7 @@ nav a:hover {
 
 /* Contenedor principal */
 .container {
-  max-width: 900px;
+  max-width: 900px; /* Ancho máximo para pantallas grandes */
   margin: auto;
   padding: 20px;
 }
@@ -168,6 +111,7 @@ form input, form select, form button {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
+  width: 100%;
 }
 
 form button {
@@ -191,6 +135,7 @@ form button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .contact-actions button {
@@ -207,16 +152,135 @@ form button:hover {
 .contact-actions .edit:hover { background-color: #ffa000; }
 .contact-actions .delete:hover { background-color: #d32f2f; }
 
-/* Responsive */
+
+/* ------------------------------------------- */
+/* MEDIA QUERIES PARA RESPONSIVIDAD (NAVEGACIÓN INFERIOR) */
+/* ------------------------------------------- */
+
+/* Estilos para pantallas pequeñas (hasta 600px de ancho) */
 @media screen and (max-width: 600px) {
+  body {
+    font-size: 0.95em;
+    padding-top: 0; /* Elimina el padding superior en móvil */
+    padding-bottom: 60px; /* Añade espacio para la barra de navegación inferior */
+  }
+
+  /* Contenedor principal: ocupa casi todo el ancho */
+  .container {
+    padding: 15px;
+    margin: 10px auto;
+    width: calc(100% - 20px);
+    max-width: none; /* Desactiva el ancho máximo para que se expanda */
+  }
+
+  /* Navbar: Pasa a la parte inferior y horizontal para móvil */
+  nav {
+    position: fixed; /* Fija en la pantalla */
+    bottom: 0; /* Lo ancla a la parte inferior */
+    top: auto; /* Deshabilita el top que tenía para escritorio */
+    height: 60px; /* Altura de la barra de navegación inferior */
+    flex-direction: row; /* Asegura que los enlaces estén en fila */
+    justify-content: space-around; /* Distribuye los enlaces uniformemente */
+    align-items: center;
+    padding: 0; /* Quita padding general de la barra */
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.2); /* Sombra hacia arriba */
+  }
+
+  nav a {
+    flex-direction: column; /* Apila el posible ícono y el texto si los tuvieras */
+    display: flex; /* Para centrar el ícono y el texto */
+    align-items: center; /* Centra el contenido verticalmente */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    padding: 8px 5px; /* Más padding para hacerlos tocables */
+    margin: 0; /* Quita el margen horizontal entre enlaces */
+    font-size: 0.8em; /* Tamaño de fuente más pequeño para el texto de navegación */
+    border-bottom: none; /* Quita la línea de separación que añadimos antes */
+    height: 100%; /* Ocupa la altura completa de la nav bar */
+    border-radius: 0; /* Quita border-radius si lo hubiera de un hover anterior */
+  }
+
+  nav a:hover {
+      background-color: rgba(255, 255, 255, 0.1); /* Sutil hover para el botón */
+      text-decoration: none; /* Quita el subrayado en hover en móvil */
+  }
+
+  /* Switch Container: Adaptación para apilar y centrar en móvil */
   .switch-container {
     flex-direction: column;
-    gap: 10px;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 15px;
+  }
+  
+  .switch-container > span { /* Asumiendo que "Alarma Activa" es un span */
+    text-align: center;
+    width: 100%;
+  }
+
+  /* Ajuste para los campos de formulario y botones en móvil */
+  form {
+    padding: 15px;
+  }
+
+  form input, form select, form button {
+    padding: 14px;
+    font-size: 1.05em;
+  }
+
+  /* Ajuste para las tarjetas de contacto en móvil */
+  .contact-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+  }
+
+  .contact-info { /* Asume que tienes un div o span que contiene el nombre/teléfono */
+      width: 100%;
+      margin-bottom: 10px;
+  }
+
+  .contact-actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .contact-actions button {
+    flex: 1;
+    margin: 5px;
+    min-width: 100px;
+  }
+}
+
+/* Opcional: Para pantallas de tabletas (601px a 900px de ancho) */
+@media screen and (min-width: 601px) and (max-width: 900px) {
+  body {
+    padding-top: 60px; /* Vuelve al padding superior para la nav bar de arriba */
+    padding-bottom: 0; /* Elimina el padding inferior */
+  }
+
+  .container {
+    padding: 25px;
+    margin: 20px auto;
+    width: auto;
   }
 
   nav {
-    flex-direction: column;
-    height: auto;
-    padding: 10px 0;
+    position: fixed; /* Asegura que siga arriba */
+    top: 0;
+    bottom: auto; /* Deshabilita el bottom para que vuelva arriba */
+    flex-direction: row;
+    justify-content: space-around;
+    height: 60px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+
+  nav a {
+    flex-direction: row; /* Asegura que los enlaces vuelvan a ser horizontales */
+    width: auto;
+    margin: 0 10px;
+    font-size: 1em; /* Vuelve al tamaño de fuente original */
+    padding: 0 5px;
   }
 }
