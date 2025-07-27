@@ -7,13 +7,21 @@
     <title>Inicio - Alarma Inteligente</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
+
     <nav>
-        <a href="{{ url_for('index') }}">Inicio</a>
-        <a href="{{ url_for('configuracion') }}">Configuración</a>
-        <a href="{{ url_for('perfil') }}">Perfil</a>
+        <a href="{{ url_for('index') }}">
+            <i class="fas fa-home"></i> <span>Inicio</span>
+        </a>
+        <a href="{{ url_for('configuracion') }}">
+            <i class="fas fa-cog"></i> <span>Configuración</span>
+        </a>
+        <a href="{{ url_for('perfil') }}">
+            <i class="fas fa-user"></i> <span>Perfil</span>
+        </a>
     </nav>
     <div class="container">
         <h1>Estado de la Alarma</h1>
